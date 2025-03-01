@@ -1,0 +1,18 @@
+/* Agrega algunos estilos adicionales para el formulario */
+.card {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-header {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .card-body {
+    padding: 2rem;
+  }
+  
+  button:disabled {
+    background-color: #6c757d;
+  }
+  

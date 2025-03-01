@@ -1,0 +1,48 @@
+<div *ngIf="!authService.isLoggedIn()">
+    <app-login></app-login>
+  </div>
+  
+  <div *ngIf="authService.isLoggedIn()">
+    <!-- Vista completa de la app, incluyendo el header, menu y footer -->
+    
+    <header style="background-color: #d6e9e9; color: black; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10;">
+      <!-- Logo e título en el centro -->
+      <div style="display: flex; align-items: center; flex-grow: 1; justify-content: center;">
+        <img src="assets/images/worker_logo.png" alt="Logo" style="max-width: 70px; max-height: 70px; vertical-align: middle; margin-right: 15px;">
+        <span style="font-size: px; vertical-align: middle;">{{this.title}}</span>
+      </div>
+  
+      <!-- Botón de Log Out a la derecha -->
+      <button (click)="logout()" style="padding: 6px 12px; background-color: #f44336; color: white; border: none; cursor: pointer; font-size: 14px;">
+        Log Out
+      </button>
+    </header>
+  
+    <div style="display: flex; min-height: calc(100vh - 90px); flex-direction: column;">
+      <!-- Menú lateral y contenido -->
+      <div style="display: flex; flex-grow: 1;">
+        <!-- Menú lateral -->
+        <div style="width: 200px; background-color: #f4f4f4; padding: 10px; font-size: 10pt;">
+          <b> Menú</b>
+          <ul>
+            <li><a routerLink="/info-worker" routerLinkActive="active">Info Workers</a></li>
+            <li><a routerLink="/list-workers" routerLinkActive="active">List Workers</a></li>
+            <li><a routerLink="/new-worker" routerLinkActive="active">Alta Workers</a></li>
+            <li><a routerLink="/update-worker" routerLinkActive="active">Actualizar Workers</a></li>
+            <li><a routerLink="/delete-worker" routerLinkActive="active">Baja Workers</a></li>
+          </ul>
+        </div>
+  
+        <!-- Contenido principal -->
+        <div style="flex-grow: 1; padding: 20px;">
+          <router-outlet></router-outlet>  <!-- Aquí se cargan los componentes -->
+        </div>
+      </div>
+  
+      <!-- Footer -->
+      <footer style="background-color: #d6e9e9; color: black; padding: 10px; text-align: center; bottom: 0; width: 100%; height: 50px;">
+        <p>&copy; {{this.year}} {{this.title}} {{this.footerMsgRights}}</p>
+      </footer>
+    </div>
+  </div>
+  

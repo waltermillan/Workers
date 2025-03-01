@@ -1,0 +1,43 @@
+<table class="table table-striped">
+    <th>
+        ID
+    </th>
+    <th>
+        Nombre/Apellido
+    </th>
+    <th>
+        Edad
+    </th>
+    <th>
+        Categoria ID
+    </th>
+    <th>
+        Antigüedad
+    </th>
+    <th>
+        Salario
+    </th>
+    <th>
+        Genero
+    </th>
+    <th>
+        F. Cumpleaños
+    </th>
+    <th>
+        Acción
+    </th>
+    <tr *ngFor="let w of workers">
+        <td>{{w.id}}</td>
+        <td>{{w.name}} / {{w.surName}}</td>
+        <td>{{w.age}}</td>
+        <td>{{w.categoryId}}</td>
+        <td>{{w.seniority}}</td>
+        <td>{{w.salary}}</td>
+        <td>{{w.gender}}</td>
+        <td>{{w.dateOfBirth | date: 'dd/MM/yyyy'}}</td>
+        <td>
+            <img src="assets/images/delete.svg" class="plus-image"
+            style="max-width: 30px; min-height: 30px;" (click)="deleteWorker(w.id)">
+        </td>
+    </tr>
+</table>

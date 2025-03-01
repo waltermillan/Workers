@@ -1,0 +1,82 @@
+<div class="container mt-1">
+    <h2 class="text-center mb-4">Actualizar trabajador</h2>
+    <form [formGroup]="workerForm" (ngSubmit)="onSubmit()" class="border p-4 rounded shadow-lg bg-light">
+
+        <div class="col-md-6 mb-3">
+            <label for="name" class="font-weight-bold">Nombre/Apellido</label>
+            <select [(ngModel)]="selectedWorkerId" name="seller" [ngModelOptions]="{standalone: true}" (change)="onWorkerChange()" class="fixed-width">
+                <option *ngFor="let w of workers" [value]="w.id">
+                  {{ w.name + ', ' + w.surName }}
+                </option>
+            </select>
+            ID: {{selectedWorkerId}}
+          </div>     
+  
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="name" class="font-weight-bold">Nombre</label>
+          <input id="name" formControlName="name" class="form-control" type="text" placeholder="Ingresa el nombre"/>
+          <div *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)" class="text-danger mt-2" title="El nombre es obligatorio.">*</div>
+        </div>
+  
+        <div class="col-md-6 mb-3">
+          <label for="surName" class="font-weight-bold">Apellido</label>
+          <input id="surName" formControlName="surName" class="form-control" type="text" placeholder="Ingresa el apellido"/>
+          <div *ngIf="f['surName'].invalid && (f['surName'].dirty || f['surName'].touched)" class="text-danger mt-2" title="El apellido es obligatorio.">*</div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="age" class="font-weight-bold">Edad</label>
+          <input id="age" formControlName="age" class="form-control" type="number" placeholder="Ingresa la edad"/>
+          <div *ngIf="f['age'].invalid && (f['age'].dirty || f['age'].touched)" class="text-danger mt-2" title="La edad debe ser entre 18 y 100 años.">*</div>
+        </div>
+  
+        <div class="col-md-6 mb-3">
+          <label for="categoryId" class="font-weight-bold">Categoría</label>
+          <input id="categoryId" formControlName="categoryId" class="form-control" type="number" placeholder="Ingresa la categoría"/>
+          <div *ngIf="f['categoryId'].invalid && (f['categoryId'].dirty || f['categoryId'].touched)" class="text-danger mt-2" title="La categoría es obligatoria.">*</div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="seniority" class="font-weight-bold">Antigüedad</label>
+          <input id="seniority" formControlName="seniority" class="form-control" type="number" placeholder="Ingresa la antigüedad"/>
+        </div>
+  
+        <div class="col-md-6 mb-3">
+          <label for="salary" class="font-weight-bold">Salario</label>
+          <input id="salary" formControlName="salary" class="form-control" type="number" placeholder="Ingresa el salario"/>
+          <div *ngIf="f['salary'].invalid && (f['salary'].dirty || f['salary'].touched)" class="text-danger mt-2" title="El salario debe ser mayor a 1000.">*</div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="gender" class="font-weight-bold">Género</label>
+          <select id="gender" formControlName="gender" class="form-control">
+            <option value="">Seleccione un género</option>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+          </select>
+          <div *ngIf="f['gender'].invalid && (f['gender'].dirty || f['gender'].touched)" class="text-danger mt-2" title="El género es obligatorio.">*</div>
+        </div>
+  
+        <div class="col-md-6 mb-3">
+          <label for="dateOfBirth" class="font-weight-bold">Fecha de Nacimiento</label>
+          <input id="dateOfBirth" formControlName="dateOfBirth" class="form-control" type="date"/>
+          <div *ngIf="f['dateOfBirth'].invalid && (f['dateOfBirth'].dirty || f['dateOfBirth'].touched)" class="text-danger mt-2" title="La fecha de nacimiento es obligatoria.">*</div>
+        </div>
+      </div>
+  
+      <div class="form-row text-center">
+        <button type="submit" [disabled]="workerForm.invalid" class="btn btn-primary btn-lg">
+          Actualizar Trabajador
+        </button>
+      </div>
+  
+    </form>
+  </div>
+  
