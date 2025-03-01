@@ -4,12 +4,11 @@
   
   <div *ngIf="authService.isLoggedIn()">
     <!-- Vista completa de la app, incluyendo el header, menu y footer -->
-    
-    <header style="background-color: #d6e9e9; color: black; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10;">
+    <header style="background-color: #6BD089; color: black; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10;">
       <!-- Logo e título en el centro -->
       <div style="display: flex; align-items: center; flex-grow: 1; justify-content: center;">
-        <img src="assets/images/worker_logo.png" alt="Logo" style="max-width: 70px; max-height: 70px; vertical-align: middle; margin-right: 15px;">
-        <span style="font-size: px; vertical-align: middle;">{{this.title}}</span>
+        <img src="assets/images/worker_logo.png" alt="Logo" style="max-width: 70px; max-height: 70px; vertical-align: middle; margin-right: 15px;" class="plus-image" (click)="redirect()">
+        <span style="font-size: px; vertical-align: middle;font-weight: bold; font-size: x-large;">{{this.title}}</span>
       </div>
   
       <!-- Botón de Log Out a la derecha -->
@@ -22,14 +21,13 @@
       <!-- Menú lateral y contenido -->
       <div style="display: flex; flex-grow: 1;">
         <!-- Menú lateral -->
-        <div style="width: 200px; background-color: #f4f4f4; padding: 10px; font-size: 10pt;">
+        <div style="width: 200px; background-color: #98E0AD; padding: 10px; font-size: 10pt;">
           <b> Menú</b>
           <ul>
             <li><a routerLink="/info-worker" routerLinkActive="active">Info Workers</a></li>
             <li><a routerLink="/list-workers" routerLinkActive="active">List Workers</a></li>
-            <li><a routerLink="/new-worker" routerLinkActive="active">Alta Workers</a></li>
-            <li><a routerLink="/update-worker" routerLinkActive="active">Actualizar Workers</a></li>
-            <li><a routerLink="/delete-worker" routerLinkActive="active">Baja Workers</a></li>
+            <li><a routerLink="/new-worker" routerLinkActive="active">New Workes</a></li>
+            <li><a routerLink="/update-worker" routerLinkActive="active">Update Workers</a></li>
           </ul>
         </div>
   
@@ -40,8 +38,8 @@
       </div>
   
       <!-- Footer -->
-      <footer style="background-color: #d6e9e9; color: black; padding: 10px; text-align: center; bottom: 0; width: 100%; height: 50px;">
-        <p>&copy; {{this.year}} {{this.title}} {{this.footerMsgRights}}</p>
+      <footer style="background-color: #6BD089; color: black; padding: 10px; text-align: center; bottom: 0; width: 100%; height: 50px;">
+        <p style="font-weight: bold;">&copy; {{this.year}} {{this.title}} {{this.footerMsgRights}}</p>
       </footer>
     </div>
   </div>

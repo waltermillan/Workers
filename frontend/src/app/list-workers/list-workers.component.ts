@@ -21,25 +21,28 @@ export class ListWorkersComponent implements OnInit {
     this.getAllWorkers();
   }
 
+  // Método para obtener todos los trabajadores
   getAllWorkers(){
     this.workerService.getWorkers().subscribe({
       next: (data: Worker[]) => {
         this.workers = data;
       },
       error: (error) => {
-        console.log('Error al cargar trabajadores.', error);
+        console.log('Error loading workers.', error);
       }
     });
   }
 
+  // Método para borrar un trabajador
   deleteWorker(id:number){
     this.workerService.deleteWorker(id).subscribe({
       next: (data) => {
-        console.log('Trabajador eliminado exitosamente.');
+        console.log('Worker deleted succesfully.');
+        alert('Worker deleted succesfully.');
         this.getAllWorkers();
       },
       error: (error) => {
-        console.error('Error al eliminar trabajador.', error);
+        console.error('Error deleting worker.', error);
       }
     });
   }

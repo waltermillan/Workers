@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { WorkerService } from '../services/worker.service'; // Importa tu servicio
-import { Router } from '@angular/router'; // Para redirigir después de crear el trabajador
+import { WorkerService } from '../services/worker.service';
+import { Router } from '@angular/router';
 import { error } from 'node:console';
 
 @Component({
@@ -27,7 +27,7 @@ export class NewWorkerComponent implements OnInit {
       age: [18, [Validators.required, Validators.min(18), Validators.max(100)]],
       categoryId: [1, [Validators.required]],
       seniority: [0, [Validators.required, Validators.min(0)]],
-      salary: [0, [Validators.required, Validators.min(1000)]],
+      salary: [1000, [Validators.required, Validators.min(1000)]],
       gender: ['', [Validators.required]],
       dateOfBirth: ['', [Validators.required]]
     });
@@ -40,11 +40,11 @@ export class NewWorkerComponent implements OnInit {
 
       this.workerService.addWorker(newWorker).subscribe({
         next: (data) => {
-          alert('Trabajador dado de alta');
+          alert('Worker added succesfully!');
           this.router.navigate(['/workers']);
         },
         error: (error) => {
-          console.error('Error al agregar el trabajador:', error);
+          console.error('Error added new worker:', error);
         }
       });
     }

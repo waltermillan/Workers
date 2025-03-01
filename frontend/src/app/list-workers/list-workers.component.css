@@ -1,4 +1,25 @@
-
 .plus-image {
     cursor: pointer;
+}
+
+.table-container {
+    max-height: 550px; /* Altura máxima para scroll vertical */
+    overflow-y: auto;  /* Scroll vertical si la tabla es muy grande */
+    overflow-x: auto;  /* Scroll horizontal si la tabla es ancha */
+    border: 1px solid #C2DECA; /* Cambiado de #ddd a #C2DECA */
+}
+  
+table {
+    width: 100%; /* Para que ocupe el ancho disponible */
+    border-collapse: collapse; /* Elimina espacios entre celdas */
+    background-color: #C2DECA; /* Si quieres cambiar el fondo de la tabla */
+}
+  
+thead th {
+    position: sticky;
+    top: 0;
+    background: #C2DECA; /* Cambiado de blanco a #C2DECA */
+    z-index: 10;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+    color: #212529; /* Si necesitas cambiar el color del texto, ajusta este valor */
 }

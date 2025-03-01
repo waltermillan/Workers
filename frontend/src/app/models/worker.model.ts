@@ -9,3 +9,4 @@ export interface Worker {
 	gender:string;
 	dateOfBirth:string;
 }
+

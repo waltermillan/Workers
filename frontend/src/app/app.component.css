@@ -1,0 +1,8 @@
+.plus-image {
+    cursor: pointer;
+}
+
+.active{
+    font-weight: bold;
+    color: #0D6EFD;
+}

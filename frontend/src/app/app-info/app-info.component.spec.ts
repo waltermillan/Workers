@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeleteWorkerComponent } from './delete-worker.component';
+import { AppInfoComponent } from './app-info.component';
 
-describe('DeleteWorkerComponent', () => {
-  let component: DeleteWorkerComponent;
-  let fixture: ComponentFixture<DeleteWorkerComponent>;
+describe('AppInfoComponent', () => {
+  let component: AppInfoComponent;
+  let fixture: ComponentFixture<AppInfoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DeleteWorkerComponent]
+      declarations: [AppInfoComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DeleteWorkerComponent);
+    fixture = TestBed.createComponent(AppInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

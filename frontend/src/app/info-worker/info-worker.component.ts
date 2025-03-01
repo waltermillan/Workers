@@ -9,36 +9,37 @@ import { error } from 'node:console';
 })
 export class InfoWorkerComponent implements OnInit {
 
-  workers: any[] = []; // Lista de trabajadores
-  currentIndex: number = 0; // Índice del trabajador actual
+  workers: any[] = []; 
+  currentIndex: number = 0;
 
   constructor(private workerService: WorkerService) { }
 
   ngOnInit(): void {
-    // Obtener los trabajadores desde la API
-    console.log('InfoWorkerComponent loaded');
     this.getAllWorkers();
   }
 
+  // Método para obtener todos los trabajadores
   getAllWorkers(){
     this.workerService.getWorkers().subscribe({
       next: (data) => {
-      this.workers = data; // Guardar los datos de los trabajadores
+      this.workers = data;
       },
       error: (error) => {
-        console.error('Error al obtener trabajadores', error);
+        console.error('Error loanding workers', error);
       }
    });
   }
 
+  // Método para borrar un trabajador
   deleteWorker(id:number){
     this.workerService.deleteWorker(id).subscribe({
       next: (data) => {
-        console.log('trabajador borrado');
+        console.log('Worker deleted succesfully.');
+        alert('Worker deleted succesfully.');
         this.getAllWorkers();
       },
       error: (error) => {
-        console.error('Error al obtener trabajadores', error);
+        console.error('Error deleting worker', error);
       }
    });
   }

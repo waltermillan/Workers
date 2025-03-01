@@ -10,8 +10,8 @@ import { FormsModule } from '@angular/forms'; // Importar FormsModule para ngMod
 import { WorkerService } from './services/worker.service';
 import { NewWorkerComponent } from './new-worker/new-worker.component';
 import { UpdateWorkerComponent } from './update-worker/update-worker.component';
-import { DeleteWorkerComponent } from './delete-worker/delete-worker.component';
-import { ListWorkersComponent } from './list-workers/list-workers.component'; // El servicio
+import { ListWorkersComponent } from './list-workers/list-workers.component';
+import { AppInfoComponent } from './app-info/app-info.component'; // El servicio
 
 @NgModule({
   declarations: [
@@ -20,8 +20,8 @@ import { ListWorkersComponent } from './list-workers/list-workers.component'; //
     InfoWorkerComponent,
     NewWorkerComponent,
     UpdateWorkerComponent,
-    DeleteWorkerComponent,
-    ListWorkersComponent
+    ListWorkersComponent,
+    AppInfoComponent
   ],
   imports: [
     BrowserModule,

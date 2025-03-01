@@ -1,9 +1,9 @@
 <div class="container mt-1">
-    <h2 class="text-center mb-4">Actualizar trabajador</h2>
+    <h2 class="text-center mb-4">Worker Update</h2>
     <form [formGroup]="workerForm" (ngSubmit)="onSubmit()" class="border p-4 rounded shadow-lg bg-light">
 
         <div class="col-md-6 mb-3">
-            <label for="name" class="font-weight-bold">Nombre/Apellido</label>
+            <label for="name" class="font-weight-bold">Name/Surname</label>
             <select [(ngModel)]="selectedWorkerId" name="seller" [ngModelOptions]="{standalone: true}" (change)="onWorkerChange()" class="fixed-width">
                 <option *ngFor="let w of workers" [value]="w.id">
                   {{ w.name + ', ' + w.surName }}
@@ -14,69 +14,68 @@
   
       <div class="row">
         <div class="col-md-6 mb-3">
-          <label for="name" class="font-weight-bold">Nombre</label>
-          <input id="name" formControlName="name" class="form-control" type="text" placeholder="Ingresa el nombre"/>
-          <div *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)" class="text-danger mt-2" title="El nombre es obligatorio.">*</div>
+          <label for="name" class="font-weight-bold">Name</label>
+          <input id="name" formControlName="name" class="form-control" type="text" placeholder="Enter the name"/>
+          <div *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)" class="text-danger mt-2" title="The name is mandatory.">*</div>
         </div>
   
         <div class="col-md-6 mb-3">
-          <label for="surName" class="font-weight-bold">Apellido</label>
-          <input id="surName" formControlName="surName" class="form-control" type="text" placeholder="Ingresa el apellido"/>
-          <div *ngIf="f['surName'].invalid && (f['surName'].dirty || f['surName'].touched)" class="text-danger mt-2" title="El apellido es obligatorio.">*</div>
-        </div>
-      </div>
-  
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <label for="age" class="font-weight-bold">Edad</label>
-          <input id="age" formControlName="age" class="form-control" type="number" placeholder="Ingresa la edad"/>
-          <div *ngIf="f['age'].invalid && (f['age'].dirty || f['age'].touched)" class="text-danger mt-2" title="La edad debe ser entre 18 y 100 años.">*</div>
-        </div>
-  
-        <div class="col-md-6 mb-3">
-          <label for="categoryId" class="font-weight-bold">Categoría</label>
-          <input id="categoryId" formControlName="categoryId" class="form-control" type="number" placeholder="Ingresa la categoría"/>
-          <div *ngIf="f['categoryId'].invalid && (f['categoryId'].dirty || f['categoryId'].touched)" class="text-danger mt-2" title="La categoría es obligatoria.">*</div>
+          <label for="surName" class="font-weight-bold">Surname</label>
+          <input id="surName" formControlName="surName" class="form-control" type="text" placeholder="Enter surname"/>
+          <div *ngIf="f['surName'].invalid && (f['surName'].dirty || f['surName'].touched)" class="text-danger mt-2" title="The surname is mandatory.">*</div>
         </div>
       </div>
   
       <div class="row">
         <div class="col-md-6 mb-3">
-          <label for="seniority" class="font-weight-bold">Antigüedad</label>
-          <input id="seniority" formControlName="seniority" class="form-control" type="number" placeholder="Ingresa la antigüedad"/>
+          <label for="age" class="font-weight-bold">Age</label>
+          <input id="age" formControlName="age" class="form-control" type="number" placeholder="Enter the age"/>
+          <div *ngIf="f['age'].invalid && (f['age'].dirty || f['age'].touched)" class="text-danger mt-2" title="Age must be between 18 and 100 years old.">*</div>
         </div>
   
         <div class="col-md-6 mb-3">
-          <label for="salary" class="font-weight-bold">Salario</label>
-          <input id="salary" formControlName="salary" class="form-control" type="number" placeholder="Ingresa el salario"/>
-          <div *ngIf="f['salary'].invalid && (f['salary'].dirty || f['salary'].touched)" class="text-danger mt-2" title="El salario debe ser mayor a 1000.">*</div>
+          <label for="categoryId" class="font-weight-bold">Category</label>
+          <input id="categoryId" formControlName="categoryId" class="form-control" type="number" placeholder="Enter the category"/>
+          <div *ngIf="f['categoryId'].invalid && (f['categoryId'].dirty || f['categoryId'].touched)" class="text-danger mt-2" title="The category is mandatory.">*</div>
         </div>
       </div>
   
       <div class="row">
         <div class="col-md-6 mb-3">
-          <label for="gender" class="font-weight-bold">Género</label>
+          <label for="seniority" class="font-weight-bold">Seniority</label>
+          <input id="seniority" formControlName="seniority" class="form-control" type="number" placeholder="Enter the seniority"/>
+        </div>
+  
+        <div class="col-md-6 mb-3">
+          <label for="salary" class="font-weight-bold">Salary</label>
+          <input id="salary" formControlName="salary" class="form-control" type="number" placeholder="Enter the salary"/>
+          <div *ngIf="f['salary'].invalid && (f['salary'].dirty || f['salary'].touched)" class="text-danger mt-2" title="Salary must be greater than 1000.">*</div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="gender" class="font-weight-bold">Gender</label>
           <select id="gender" formControlName="gender" class="form-control">
             <option value="">Seleccione un género</option>
             <option value="M">Masculino</option>
             <option value="F">Femenino</option>
           </select>
-          <div *ngIf="f['gender'].invalid && (f['gender'].dirty || f['gender'].touched)" class="text-danger mt-2" title="El género es obligatorio.">*</div>
+          <div *ngIf="f['gender'].invalid && (f['gender'].dirty || f['gender'].touched)" class="text-danger mt-2" title="Gender is mandatory.">*</div>
         </div>
   
         <div class="col-md-6 mb-3">
-          <label for="dateOfBirth" class="font-weight-bold">Fecha de Nacimiento</label>
+          <label for="dateOfBirth" class="font-weight-bold">Birthday</label>
           <input id="dateOfBirth" formControlName="dateOfBirth" class="form-control" type="date"/>
-          <div *ngIf="f['dateOfBirth'].invalid && (f['dateOfBirth'].dirty || f['dateOfBirth'].touched)" class="text-danger mt-2" title="La fecha de nacimiento es obligatoria.">*</div>
+          <div *ngIf="f['dateOfBirth'].invalid && (f['dateOfBirth'].dirty || f['dateOfBirth'].touched)" class="text-danger mt-2" title="The birthday is mandatory.">*</div>
         </div>
       </div>
   
       <div class="form-row text-center">
-        <button type="submit" [disabled]="workerForm.invalid" class="btn btn-primary btn-lg">
-          Actualizar Trabajador
+        <button type="submit" [disabled]="workerForm.invalid" class="btn btn-success btn-lg">
+          Update Worker
         </button>
       </div>
-  
     </form>
   </div>
   

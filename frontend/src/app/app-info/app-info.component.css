@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fa;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+}
+h1, h2 {
+    color: #333;
+}
+.section {
+    margin-bottom: 30px;
+}
+.features, .improvements {
+    list-style-type: none;
+    padding: 0;
+}
+.features li, .improvements li {
+    background-color: #e7f7e7;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+.features li {
+    color: #28a745;
+}
+.improvements li {
+    color: #ffc107;
+}
+.intro-text {
+    font-size: 1.1em;
+    color: #555;
+}
+.section-title {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+.section-description {
+    color: #777;
+    font-size: 1.1em;
+}

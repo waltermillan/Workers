@@ -46,16 +46,16 @@ export class UpdateWorkerComponent implements OnInit {
     if (this.workerForm.valid) {
       const newWorker = this.workerForm.value;
 
-      console.log('ID seleccionado:', this.selectedWorkerId); // 👈 Verifica si el ID es correcto
-      console.log('Datos enviados:', JSON.stringify(newWorker)); // 👈 Verifica qué datos se están enviando
+      //console.log('ID selected:', this.selectedWorkerId); 
+      //console.log('Sending data:', JSON.stringify(newWorker)); 
 
       this.workerService.updateWorker(newWorker, this.selectedWorkerId).subscribe({
         next: (data) => {
-          alert('Trabajador actualizado');
+          alert('worker updated');
           this.getAllWorkers();
         },
         error: (error) => {
-          console.error('Error al actualizar trabajador:', error);
+          console.error('Error updating worker:', error);
         }
       });
     }
@@ -66,17 +66,19 @@ export class UpdateWorkerComponent implements OnInit {
     return this.workerForm.controls;
   }
 
+  // Método para obtener todos los trabajadores.
   getAllWorkers(){
     this.workerService.getWorkers().subscribe({
       next: (data) => {
         this.workers = data;
       },
       error: (error) => {
-        console.error('Error al cargar grilla de trabajadores.', error);
+        console.error('Error loading worker\'s grid.', error);
       }
-    })
+    });
   }
 
+  //Método para cargar datos de un trabajador.
   onWorkerChange(){
     this.workerService.getWorker(this.selectedWorkerId).subscribe({
       next: (data) => {
@@ -95,7 +97,7 @@ export class UpdateWorkerComponent implements OnInit {
         });
       },
       error: (error) => {
-        console.error('Error al obtener datos del trabajador.', error);
+        console.error('Error getting data worker.', error);
       }
     });
   }

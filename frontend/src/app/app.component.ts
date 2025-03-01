@@ -8,7 +8,7 @@ import { AuthService } from './services/auth.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Workers & Registers Co';
+  title = 'Workers\' registry Co.';
   year:number = new Date().getFullYear();
   footerMsgRights: string = 'All rights reserved.';
 
@@ -18,28 +18,11 @@ export class AppComponent {
 
   }
 
-  redirect(value:number){
-    switch (value) 
-    {
-      case 1:
-        this.router.navigate(['/login']);
-        break;
-      case 2:
-        this.router.navigate(['/new-worker']);
-        break;
-      case 3:
-        this.router.navigate(['/update-worker']);
-        break;
-      case 4:
-        this.router.navigate(['/delete-worker']);
-        break;
-      default:
-        this.router.navigate(['/login']);
-        break;
-    }
-  }
-
   logout(){
     this.authService.loggedIn = false;
+  }
+
+  redirect(){
+    this.router.navigate(['/app-Info']);
   }
 }

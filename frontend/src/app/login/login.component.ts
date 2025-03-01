@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
 
   }
 
+  // Método para enviar el formulario
   onSubmit(): void {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
@@ -38,7 +39,7 @@ export class LoginComponent implements OnInit {
           if (response.authenticated) {
             this.authService.loggedIn = true;
  
-            this.router.navigate(['/info-worker']);
+            this.router.navigate(['/app-Info']);
           
           } else {
            
@@ -51,5 +52,4 @@ export class LoginComponent implements OnInit {
     });
     }
   }
-  
 }
