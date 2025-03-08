@@ -1,28 +1,27 @@
-# Proyecto Workers
-Visualizacion de trabajadores. ABM clásico.
+# Project Workers
+Visualization of workers. Classic ABM.
 
-## Objetivo:
+## Objective:
 
-Practicar .NET (C#) / SQL y Angular (Typescript) / patrones de diseño / Arquitectura Onion.
-Conectar a SQL Server, por medio de EF.
+Practice .NET (C#) / SQL and Angular (Typescript) / design patterns / Onion Architecture.
+Connect to SQL Server, through EF.
 
-## Características
+## Features
 
 BACKEND:
-- Arquitectura Onion.
-- Diseño de patrones: Repository/UnitOfWork/DTO
+- Onion Architecture.
+- Design Patterns: Repository/UnitOfWork/DTO.
 
 FRONTEND:
-- Desarrollado con Angular 18.0.2
-- Orientado a módulos.
+- Developed with Angular 18.0.2.
+- Module-oriented.
 
-BBDD
-- Escrito en SQL Server
-- Tablas (DDLs) y Datos (DMLs)
+DB
+- Written in SQL Server
+- Tables (DDLs) and Data (DMLs)
 
-## Instalación
+## Installation
 
-1. Clona el repositorio:
+1. Clone the repository:
 
 git clone https://github.com/waltermillan/Workers.git
-
