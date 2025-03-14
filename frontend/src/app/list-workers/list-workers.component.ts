@@ -21,7 +21,6 @@ export class ListWorkersComponent implements OnInit {
     this.getAllWorkers();
   }
 
-  // Método para obtener todos los trabajadores
   getAllWorkers(){
     this.workerService.getWorkers().subscribe({
       next: (data: Worker[]) => {
@@ -33,7 +32,6 @@ export class ListWorkersComponent implements OnInit {
     });
   }
 
-  // Método para borrar un trabajador
   deleteWorker(id:number){
     this.workerService.deleteWorker(id).subscribe({
       next: (data) => {
@@ -46,5 +44,4 @@ export class ListWorkersComponent implements OnInit {
       }
     });
   }
-
 }

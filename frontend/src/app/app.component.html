@@ -3,24 +3,21 @@
   </div>
   
   <div *ngIf="authService.isLoggedIn()">
-    <!-- Vista completa de la app, incluyendo el header, menu y footer -->
     <header style="background-color: #6BD089; color: black; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10;">
-      <!-- Logo e título en el centro -->
       <div style="display: flex; align-items: center; flex-grow: 1; justify-content: center;">
         <img src="assets/images/worker_logo.png" alt="Logo" style="max-width: 70px; max-height: 70px; vertical-align: middle; margin-right: 15px;" class="plus-image" (click)="redirect()">
         <span style="font-size: px; vertical-align: middle;font-weight: bold; font-size: x-large;">{{this.title}}</span>
       </div>
   
-      <!-- Botón de Log Out a la derecha -->
       <button (click)="logout()" style="padding: 6px 12px; background-color: #f44336; color: white; border: none; cursor: pointer; font-size: 14px;">
         Log Out
       </button>
     </header>
   
     <div style="display: flex; min-height: calc(100vh - 90px); flex-direction: column;">
-      <!-- Menú lateral y contenido -->
+
       <div style="display: flex; flex-grow: 1;">
-        <!-- Menú lateral -->
+
         <div style="width: 200px; background-color: #98E0AD; padding: 10px; font-size: 10pt;">
           <b> Menú</b>
           <ul>
@@ -31,13 +28,11 @@
           </ul>
         </div>
   
-        <!-- Contenido principal -->
         <div style="flex-grow: 1; padding: 20px;">
-          <router-outlet></router-outlet>  <!-- Aquí se cargan los componentes -->
+          <router-outlet></router-outlet>
         </div>
       </div>
   
-      <!-- Footer -->
       <footer style="background-color: #6BD089; color: black; padding: 10px; text-align: center; bottom: 0; width: 100%; height: 50px;">
         <p style="font-weight: bold;">&copy; {{this.year}} {{this.title}} {{this.footerMsgRights}}</p>
       </footer>

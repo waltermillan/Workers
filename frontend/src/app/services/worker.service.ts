@@ -12,29 +12,31 @@ export class WorkerService {
 
   constructor(private http: HttpClient) { }
 
+  
+  // Get a Worker by ID
   getWorker(id:number): Observable<Worker>{
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<Worker>(url);
   }
 
-  // Método para obtener los trabajadores
+  // Get all Workers
   getWorkers(): Observable<Worker[]> {
     return this.http.get<Worker[]>(`${this.apiUrl}`);
   }
 
-  // Método para agregar un nuevo trabajador
+  // Get for add Workers
   addWorker(worker: Worker): Observable<Worker> {
     const url =`${this.apiUrl}`;
     return this.http.post<Worker>(url, worker);
   }
 
-  // Método para actualiar un trabajador
+  // Update a Worker
   updateWorker(worker: Worker, id:number): Observable<Worker> {
     const url =`${this.apiUrl}/${id}`;
     return this.http.put<Worker>(url, worker)
   }
 
-  // Método para borrar un trabajador
+  // Delete a Worker by ID
   deleteWorker(id:number): Observable<Worker> {
     const url =`${this.apiUrl}/${id}`;
     return this.http.delete<Worker>(url)

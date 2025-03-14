@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router'; // Para redirigir a otro componente
+import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 
 @Component({

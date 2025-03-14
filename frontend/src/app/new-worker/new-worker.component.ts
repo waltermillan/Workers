@@ -11,7 +11,7 @@ import { error } from 'node:console';
 })
 export class NewWorkerComponent implements OnInit {
 
-  workerForm!: FormGroup; // Definir el formulario reactivo
+  workerForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -20,7 +20,7 @@ export class NewWorkerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Inicializar el formulario con validaciones
+    
     this.workerForm = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(50)]],
       surName: ['', [Validators.required, Validators.maxLength(50)]],
@@ -33,7 +33,6 @@ export class NewWorkerComponent implements OnInit {
     });
   }
 
-  // Método para enviar el formulario
   onSubmit(): void {
     if (this.workerForm.valid) {
       const newWorker = this.workerForm.value;
@@ -50,7 +49,6 @@ export class NewWorkerComponent implements OnInit {
     }
   }
 
-  // Método para obtener los errores de cada campo
   get f() {
     return this.workerForm.controls;
   }

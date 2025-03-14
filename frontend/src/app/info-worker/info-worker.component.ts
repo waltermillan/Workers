@@ -18,7 +18,6 @@ export class InfoWorkerComponent implements OnInit {
     this.getAllWorkers();
   }
 
-  // Método para obtener todos los trabajadores
   getAllWorkers(){
     this.workerService.getWorkers().subscribe({
       next: (data) => {
@@ -30,7 +29,6 @@ export class InfoWorkerComponent implements OnInit {
    });
   }
 
-  // Método para borrar un trabajador
   deleteWorker(id:number){
     this.workerService.deleteWorker(id).subscribe({
       next: (data) => {
@@ -44,14 +42,12 @@ export class InfoWorkerComponent implements OnInit {
    });
   }
 
-  // Método para pasar al siguiente trabajador
   nextWorker(): void {
     if (this.currentIndex < this.workers.length - 1) {
       this.currentIndex++;
     }
   }
 
-  // Método para volver al trabajador anterior
   previousWorker(): void {
     if (this.currentIndex > 0) {
       this.currentIndex--;

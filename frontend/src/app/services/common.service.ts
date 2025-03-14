@@ -5,15 +5,17 @@ import { Injectable } from '@angular/core';
 })
 export class CommonService {
 
+  constructor() { 
 
-  constructor() { }
+  }
 
+  //Get the date in short format.
   getShortFormattedDate(date: Date): string {
-    const now = new Date(date);  // Aseguramos que `date` sea un objeto Date
-    const year = now.getFullYear();  // Obtenemos el año
-    const month = ("0" + (now.getMonth() + 1)).slice(-2);  // Obtenemos el mes (recuerda que empieza en 0)
-    const day = ("0" + now.getDate()).slice(-2);  // Obtenemos el día y aseguramos que tenga 2 dígitos
+    const now = new Date(date);
+    const year = now.getFullYear(); 
+    const month = ("0" + (now.getMonth() + 1)).slice(-2);
+    const day = ("0" + now.getDate()).slice(-2);
   
-    return `${year}-${month}-${day}`;  // Formato "yyyy-MM-dd"
+    return `${year}-${month}-${day}`;
   }
 }

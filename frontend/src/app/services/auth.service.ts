@@ -9,7 +9,7 @@ export class AuthService {
 
   public loggedIn: boolean = false;
 
-  private apiUrl = 'http://localhost:5184/api/administrators/login'; // URL de la API
+  private apiUrl = 'http://localhost:5184/api/administrators/login';
 
   constructor(private http: HttpClient) {}
 
