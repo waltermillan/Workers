@@ -1,22 +1,25 @@
-# 🌦️ Workers App Project
+# 👷‍♂️ Workers App Project
 
-Visualization of workers. Classic ABM.
-the idea of this project is to practice the whole development of an application, it is simple. the aim is to segregate functionality by means of two profiles (administrator and User). And the idea is to practice design patterns: Factory, Repository, DTO and UnitOfWork.
+A simple worker management app (classic CRUD).
+
+This project was created to practice full-stack application development, with a focus on clean architecture and the use of design patterns. The app includes two user roles: **Administrator** and **User**, and applies patterns such as Factory, Repository, DTO, and Unit of Work.
+
 ---
 
 ## 📅 Changelog
 
-- **2025-03-01**: Initial upload — Backend / Frontend / Database. Add login component.
-- **2025-03-02**: Front End: Improvement of the look & feel of the page, English translation and visualisation improvements.
-- **2025-03-14**: Back End/Front End/Databases: Corrected database table names in plural, added HashPassword class and cleaned up frontEnd code.
-- **2025-03-21**: Back End/Front End/Databases: Complete app update, use of EF, add Category entity, improve login module.
+- **2025-03-01**: Initial upload — Backend / Frontend / Database. Added login component.
+- **2025-03-02**: Frontend: UI/UX improvements, English translation, and visualization tweaks.
+- **2025-03-14**: Backend/Frontend/Database: Fixed plural table names, added `HashPassword` class, cleaned frontend code.
+- **2025-03-21**: Full app update: introduced EF Core, added `Category` entity, enhanced login module.
 
 ---
 
 ## 🎯 Objective
 
-To practice with:
-- **.NET (C#)** and **SQL (Oracle DB)**
+To gain hands-on experience with:
+
+- **.NET (C#)** and **SQL Server**
 - **Angular (TypeScript)**
 - **Design Patterns**
 - **Onion Architecture**
@@ -26,7 +29,8 @@ To practice with:
 ## 🚀 Features
 
 ### 🔧 Backend
-- Follows **Onion Architecture**
+
+- Based on **Onion Architecture**
 - Implements several **Design Patterns**:
   - Repository Pattern
   - Factory
@@ -35,24 +39,24 @@ To practice with:
   - Data Transfer Object (DTO)
 
 - **Key Libraries**:
-  - Encryption:
+  - **Encryption**:
     - `BCrypt.Net-Next`
     - `System.Security.Cryptography` (AES-256 encryption)
-  - Logging:
+  - **Logging**:
     - `Serilog`
     - `Serilog.Extensions.Logging`
     - `Serilog.Sinks.File`
-  - ORM:
-    - `Microsoft.EntityFrameworkCore` for SQL Server Express integration
-    - `Microsoft.EntityFrameworkCore.Design` for SQL Server Express integration
-    - `Microsoft.EntityFrameworkCore.SqlServer` for SQL Server Express integration
+  - **ORM**:
+    - `Microsoft.EntityFrameworkCore` (SQL Server Express)
+    - `Microsoft.EntityFrameworkCore.Design`
+    - `Microsoft.EntityFrameworkCore.SqlServer`
 
 ---
 
 ### 💻 Frontend
 
 - Built with **Angular 18.2.12**
-- Uses Angular Material for modal/popup support:
+- Uses Angular Material for modals and UI components:
   - `@angular/material: 18.2.14`
   - `@angular/animations: 18.2.13`
   - `@angular/cdk: 18.2.14`
@@ -62,8 +66,8 @@ To practice with:
 
 ### 🗄️ Database
 
-- Written in **SQL Server DB (via SQL Server Management)**
 - Uses **SQL Server Express**
+- Managed with **SQL Server Management Studio (SSMS)**
 - Includes:
   - **DDL scripts** for table creation
   - **DML scripts** for sample data insertion
@@ -74,10 +78,10 @@ To practice with:
 
 ### ✅ Prerequisites
 
-Ensure the following are installed on your system:
+Make sure you have the following installed:
 
 - [.NET SDK 9.0.200](https://dotnet.microsoft.com/)
-- [SQL Server Management](https://learn.microsoft.com/en-us/ssms/download-sql-server-management-studio-ssms)
+- [SQL Server Management Studio (SSMS)](https://learn.microsoft.com/en-us/ssms/download-sql-server-management-studio-ssms)
 - [Node.js + npm](https://nodejs.org/) (for frontend)
 
 ---
@@ -90,7 +94,7 @@ Ensure the following are installed on your system:
     ```
 
 2. Follow the video guides for full setup:
-    - [1st Version Setup](xxxx)
+    - [Version 1 Setup Guide](xxxx)
 
 3. Complete the remaining setup steps as described in the project documentation.
 
