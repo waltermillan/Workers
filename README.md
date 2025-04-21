@@ -94,7 +94,7 @@ Make sure you have the following installed:
     ```
 
 2. Follow the video guides for full setup:
-    - [Version 1 Setup Guide](xxxx)
+    - [Version 1 Display Version](https://youtu.be/7VDJdXPcyiI)
 
 3. Complete the remaining setup steps as described in the project documentation.
 
