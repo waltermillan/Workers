@@ -1,23 +1,21 @@
-﻿using API.Controllers;
-using AutoMapper;
+﻿using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-[ApiController]
-[Route("api/categories")] // Usamos el plural en la ruta para seguir la convención RESTful
-public class CategoryController : BaseApiController
+namespace API.Controllers;
+
+public class CategoriesController : BaseApiController
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public CategoryController(IUnitOfWork unitOfWork, IMapper mapper)
+    public CategoriesController(IUnitOfWork unitOfWork, IMapper mapper)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
     }
 
-    // Método existente: obtener todas las ciudades
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -27,7 +25,6 @@ public class CategoryController : BaseApiController
         return _mapper.Map<List<Category>>(categories);
     }
 
-    // Método existente: obtener una ciudad por su ID
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -42,7 +39,6 @@ public class CategoryController : BaseApiController
         return _mapper.Map<Category>(category);
     }
 
-    // Método existente: agregar una categoria
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -59,12 +55,11 @@ public class CategoryController : BaseApiController
         return CreatedAtAction(nameof(Post), new { id = oCategory.Id }, oCategory);
     }
 
-    // Método existente: actualizar una categoria
-    [HttpPut("{id}")]
+    [HttpPut()]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<Category>> Put(int id, [FromBody] Category oCategory)
+    public async Task<ActionResult<Category>> Put([FromBody] Category oCategory)
     {
         if (oCategory is null)
             return NotFound();
@@ -75,7 +70,6 @@ public class CategoryController : BaseApiController
         return oCategory;
     }
 
-    // Método existente: eliminar una categoria
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

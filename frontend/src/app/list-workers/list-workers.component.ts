@@ -1,47 +1,61 @@
 import { Component, OnInit } from '@angular/core';
-import { Worker } from '../models/worker.model';
+import { MatDialog } from '@angular/material/dialog';
+
+import { SuccessDialogComponent } from '../modals/success-dialog/success-dialog.component';
+import { FailureDialogComponent } from '../modals/failure-dialog/failure-dialog.component';
+import { WorkerDTO } from '../models/worker-dto.model';
 import { WorkerService } from '../services/worker.service';
-import { Observable } from 'rxjs';
-import { error } from 'console';
 
 @Component({
   selector: 'app-list-workers',
   templateUrl: './list-workers.component.html',
-  styleUrl: './list-workers.component.css'
+  styleUrl: './list-workers.component.css',
 })
 export class ListWorkersComponent implements OnInit {
+  workers: WorkerDTO[] = [];
 
-  workers:Worker[] = []
+  constructor(
+    private workerService: WorkerService,
+    private dialog: MatDialog
+  ) {}
 
-  constructor(private workerService: WorkerService) {
-    
-  }
-
-  ngOnInit(){
+  ngOnInit() {
     this.getAllWorkers();
   }
 
-  getAllWorkers(){
-    this.workerService.getWorkers().subscribe({
-      next: (data: Worker[]) => {
+  getAllWorkers() {
+    this.workerService.getWorkersDto().subscribe({
+      next: (data: WorkerDTO[]) => {
         this.workers = data;
       },
       error: (error) => {
-        console.log('Error loading workers.', error);
-      }
+        console.error('Error loading workers.', error);
+        this.dialog.open(FailureDialogComponent, {
+          data: {
+            message: 'Error loading workers.',
+          },
+        });
+      },
     });
   }
 
-  deleteWorker(id:number){
+  deleteWorker(id: number) {
     this.workerService.deleteWorker(id).subscribe({
       next: (data) => {
-        console.log('Worker deleted succesfully.');
-        alert('Worker deleted succesfully.');
+        this.dialog.open(SuccessDialogComponent, {
+          data: {
+            message: 'Worker deleted succesfully.',
+          },
+        });
         this.getAllWorkers();
       },
       error: (error) => {
-        console.error('Error deleting worker.', error);
-      }
+        this.dialog.open(FailureDialogComponent, {
+          data: {
+            message: 'Error deleting worker.',
+          },
+        });
+      },
     });
   }
 }

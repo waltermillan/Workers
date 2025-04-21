@@ -1,34 +1,38 @@
 <div class="table-container">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name/Surname</th>
-          <th>Age</th>
-          <th>Category ID</th>
-          <th>Seniority</th>
-          <th>Salary</th>
-          <th>Gender</th>
-          <th>Birthday</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let w of workers">
-          <td>{{ w.id }}</td>
-          <td>{{ w.name }} / {{ w.surName }}</td>
-          <td>{{ w.age }}</td>
-          <td>{{ w.categoryId }}</td>
-          <td>{{ w.seniority }}</td>
-          <td>{{ w.salary }}</td>
-          <td>{{ w.gender }}</td>
-          <td>{{ w.dateOfBirth | date: 'dd/MM/yyyy' }}</td>
-          <td>
-            <img src="assets/images/delete.svg" class="plus-image"
-                 style="max-width: 30px; min-height: 30px;" (click)="deleteWorker(w.id)" title="delete a worker">
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name/Surname</th>
+        <th>Age</th>
+        <th>Category ( ID )</th>
+        <th>Seniority</th>
+        <th>Salary [ €/y ]</th>
+        <th>Gender</th>
+        <th>Birthday</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let w of workers">
+        <td>{{ w.id }}</td>
+        <td>{{ w.name }} / {{ w.surName }}</td>
+        <td>{{ w.age }}</td>
+        <td>{{ w.category }} ( {{ w.categoryId }} )</td>
+        <td>{{ w.seniority }}</td>
+        <td>{{ w.salary }}</td>
+        <td>{{ w.gender }}</td>
+        <td>{{ w.dateOfBirth | date : "dd/MM/yyyy" }}</td>
+        <td>
+          <img
+            src="assets/images/delete.svg"
+            class="plus-image"
+            style="max-width: 30px; min-height: 30px"
+            (click)="deleteWorker(w.id)"
+            title="delete a worker"
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

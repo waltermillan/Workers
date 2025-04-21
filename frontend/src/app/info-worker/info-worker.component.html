@@ -1,19 +1,39 @@
 <div *ngIf="workers.length > 0" class="container mt-1">
-  <h2 class="text-center mb-4">Worker {{ currentIndex + 1 }} of {{ workers.length }}</h2>
+  <h2 class="text-center mb-4">
+    Worker {{ currentIndex + 1 }} of {{ workers.length }}
+  </h2>
   <form class="border p-4 rounded shadow-lg bg-light">
-    <input type="image" src="assets/images/delete.svg" style="max-width: 30px;max-height: 30px;"(click)="deleteWorker(workers[currentIndex].id)" title="delete a worker">
+    <input
+      type="image"
+      src="assets/images/delete.svg"
+      style="max-width: 30px; max-height: 30px"
+      (click)="deleteWorker(workers[currentIndex].id)"
+      title="delete a worker"
+    />
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
           <label for="name">Name:</label>
-          <input id="name" [(ngModel)]="workers[currentIndex].name" name="name" class="form-control" disabled>
+          <input
+            id="name"
+            [(ngModel)]="workers[currentIndex].name"
+            name="name"
+            class="form-control"
+            disabled
+          />
         </div>
       </div>
-      
+
       <div class="col-md-6">
         <div class="form-group">
           <label for="surName">Surname:</label>
-          <input id="surName" [(ngModel)]="workers[currentIndex].surName" name="surName" class="form-control" disabled>
+          <input
+            id="surName"
+            [(ngModel)]="workers[currentIndex].surName"
+            name="surName"
+            class="form-control"
+            disabled
+          />
         </div>
       </div>
     </div>
@@ -22,14 +42,26 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="age">Age:</label>
-          <input id="age" [(ngModel)]="workers[currentIndex].age" name="age" class="form-control" disabled>
+          <input
+            id="age"
+            [(ngModel)]="workers[currentIndex].age"
+            name="age"
+            class="form-control"
+            disabled
+          />
         </div>
       </div>
-      
+
       <div class="col-md-6">
         <div class="form-group">
           <label for="categoryId">Category:</label>
-          <input id="categoryId" [(ngModel)]="workers[currentIndex].categoryId" name="categoryId" class="form-control" disabled>
+          <input
+            id="categoryId"
+            [(ngModel)]="workers[currentIndex].category"
+            name="category"
+            class="form-control"
+            disabled
+          />
         </div>
       </div>
     </div>
@@ -38,14 +70,26 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="seniority">Seniority:</label>
-          <input id="seniority" [(ngModel)]="workers[currentIndex].seniority" name="seniority" class="form-control" disabled>
+          <input
+            id="seniority"
+            [(ngModel)]="workers[currentIndex].seniority"
+            name="seniority"
+            class="form-control"
+            disabled
+          />
         </div>
       </div>
-      
+
       <div class="col-md-6">
         <div class="form-group">
-          <label for="salary">Salary:</label>
-          <input id="salary" [(ngModel)]="workers[currentIndex].salary" name="salary" class="form-control" disabled>
+          <label for="salary">Salary [ e / y ]:</label>
+          <input
+            id="salary"
+            [(ngModel)]="workers[currentIndex].salary"
+            name="salary"
+            class="form-control"
+            disabled
+          />
         </div>
       </div>
     </div>
@@ -54,21 +98,63 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="gender">Gender:</label>
-          <input id="gender" [(ngModel)]="workers[currentIndex].gender" name="gender" class="form-control" disabled>
+          <input
+            id="gender"
+            [(ngModel)]="workers[currentIndex].gender"
+            name="gender"
+            class="form-control"
+            disabled
+          />
         </div>
       </div>
-      
+
       <div class="col-md-6 mb-3">
         <div class="form-group">
           <label for="dateOfBirth">Birthday:</label>
-          <input id="dateOfBirth" [(ngModel)]="workers[currentIndex].dateOfBirth" name="dateOfBirth" class="form-control" disabled>
+          <input
+            id="dateOfBirth"
+            [value]="workers[currentIndex].dateOfBirth | date : 'dd/MM/yyyy'"
+            name="dateOfBirth"
+            class="form-control"
+            disabled
+          />
         </div>
       </div>
     </div>
 
     <div class="form-row text-center">
-      <button type="button" (click)="previousWorker()" [disabled]="currentIndex === 0" class="btn btn-success btn-lg">← Previous</button>
-      <button type="button" (click)="nextWorker()" [disabled]="currentIndex === workers.length - 1" class="btn btn-success btn-lg">Next →</button>
+      <button
+        type="button"
+        (click)="firstWorker()"
+        [disabled]="currentIndex === 0"
+        class="btn btn-success btn-lg"
+      >
+        ← First
+      </button>
+      <button
+        type="button"
+        (click)="previousWorker()"
+        [disabled]="currentIndex === 0"
+        class="btn btn-success btn-lg"
+      >
+        ← Previous
+      </button>
+      <button
+        type="button"
+        (click)="nextWorker()"
+        [disabled]="currentIndex === workers.length - 1"
+        class="btn btn-success btn-lg"
+      >
+        Next →
+      </button>
+      <button
+        type="button"
+        (click)="lastWorker()"
+        [disabled]="currentIndex === workers.length - 1"
+        class="btn btn-success btn-lg"
+      >
+        Last →
+      </button>
     </div>
   </form>
 </div>

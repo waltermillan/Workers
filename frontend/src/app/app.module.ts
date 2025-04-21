@@ -4,6 +4,14 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';  
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+
 import { LoginComponent } from './login/login.component';
 import { InfoWorkerComponent } from './info-worker/info-worker.component';
 import { FormsModule } from '@angular/forms'; 
@@ -11,7 +19,14 @@ import { WorkerService } from './services/worker.service';
 import { NewWorkerComponent } from './new-worker/new-worker.component';
 import { UpdateWorkerComponent } from './update-worker/update-worker.component';
 import { ListWorkersComponent } from './list-workers/list-workers.component';
-import { AppInfoComponent } from './app-info/app-info.component'; 
+import { HomeComponent } from './home/home.component'; 
+
+import { SuccessDialogComponent } from './modals/success-dialog/success-dialog.component';
+import { FailureDialogComponent } from './modals/failure-dialog/failure-dialog.component';
+import { WarningDialogComponent } from './modals/warning-dialog/warning-dialog.component';
+import { ListCategoriesComponent } from './list-categories/list-categories.component';
+import { UpdateCategoryComponent } from './update-category/update-category.component';
+import { NewCategoryComponent } from './new-category/new-category.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +36,26 @@ import { AppInfoComponent } from './app-info/app-info.component';
     NewWorkerComponent,
     UpdateWorkerComponent,
     ListWorkersComponent,
-    AppInfoComponent
+    HomeComponent,
+    SuccessDialogComponent,
+    FailureDialogComponent,
+    WarningDialogComponent,
+    ListCategoriesComponent,
+    UpdateCategoryComponent,
+    NewCategoryComponent 
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule 
+    FormsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatInputModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [
     [WorkerService],

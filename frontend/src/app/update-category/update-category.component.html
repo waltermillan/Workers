@@ -1,0 +1,52 @@
+<div class="container mt-1">
+  <h2 class="text-center mb-4">Category Update</h2>
+  <form
+    [formGroup]="categoryForm"
+    (ngSubmit)="onSubmit()"
+    class="border p-4 rounded shadow-lg bg-light"
+  >
+    <div class="col-md-6 mb-3">
+      <label for="name" class="font-weight-bold">Name/Surname</label>
+      <select
+        [(ngModel)]="selectedCategoryId"
+        name="seller"
+        [ngModelOptions]="{ standalone: true }"
+        (change)="onCategoryChange()"
+        class="fixed-width"
+      >
+        <option *ngFor="let w of categories" [value]="w.id">
+          {{ w.name }}
+        </option>
+      </select>
+      ID: {{ selectedCategoryId }}
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="name" class="font-weight-bold">Name</label>
+        <input
+          id="name"
+          formControlName="name"
+          class="form-control"
+          type="text"
+          placeholder="Enter the name"
+        />
+        <div
+          *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)"
+          class="text-danger mt-2"
+          title="The name is mandatory."
+        >
+          *
+        </div>
+      </div>
+    </div>
+    <div class="form-row text-center">
+      <button
+        type="submit"
+        [disabled]="categoryForm.invalid"
+        class="btn btn-success btn-lg"
+      >
+        Update Category
+      </button>
+    </div>
+  </form>
+</div>

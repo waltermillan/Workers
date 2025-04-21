@@ -1,0 +1,31 @@
+.table-container {
+    max-height: 520px;
+    overflow-y: auto;
+    overflow-x: auto;
+    border: 1px solid #C2DECA;
+  }
+  
+  .table-container.no-scroll-border {
+    border-top: none;
+  }
+  
+  .full-width-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #C2DECA;
+    table-layout: fixed;
+  }
+  
+  thead th {
+    position: sticky;
+    top: 0;
+    background: #C2DECA;
+    z-index: 10;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    color: #212529;
+  }
+
+  img {
+    cursor: pointer;
+  }
+  

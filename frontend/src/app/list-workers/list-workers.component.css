@@ -3,7 +3,7 @@
 }
 
 .table-container {
-    max-height: 550px;
+    max-height: 525px;
     overflow-y: auto;
     overflow-x: auto;
     border: 1px solid #C2DECA;
@@ -15,11 +15,3 @@ table {
     background-color: #C2DECA;
 }
   
-thead th {
-    position: sticky;
-    top: 0;
-    background: #C2DECA;
-    z-index: 10;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-    color: #212529;
-}

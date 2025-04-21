@@ -23,10 +23,10 @@ public class AdministratorRepository : GenericRepository<Administrator>, IAdmini
                             .ToListAsync();
     }
 
-    public async Task<Administrator?> GetByUserAndPasswordAsync(string user, string password)
+    public async Task<Administrator?> GetByUserAsync(string user)
     {
-        // Buscar administrador por usuario y contraseña
+        // Search administrator by user
         return await _context.Administrator
-                             .FirstOrDefaultAsync(a => a.User == user && a.PassWord == password);
+                             .FirstOrDefaultAsync(a => a.User == user);
     }
 }

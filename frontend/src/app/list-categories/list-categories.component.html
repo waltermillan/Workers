@@ -1,0 +1,24 @@
+<div class="table-container">
+  <table class="table table-striped" name="tbl1">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of categories">
+        <td>{{ c.name }}</td>
+        <td>
+          <img
+            src="assets/images/delete.svg"
+            class="plus-image"
+            style="max-width: 30px; min-height: 30px"
+            (click)="deleteCategory(c.id)"
+            title="delete a category"
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

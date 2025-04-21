@@ -1,41 +1,182 @@
 <div *ngIf="!authService.isLoggedIn()">
-    <app-login></app-login>
-  </div>
-  
-  <div *ngIf="authService.isLoggedIn()">
-    <header style="background-color: #6BD089; color: black; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10;">
-      <div style="display: flex; align-items: center; flex-grow: 1; justify-content: center;">
-        <img src="assets/images/worker_logo.png" alt="Logo" style="max-width: 70px; max-height: 70px; vertical-align: middle; margin-right: 15px;" class="plus-image" (click)="redirect()">
-        <span style="font-size: px; vertical-align: middle;font-weight: bold; font-size: x-large;">{{this.title}}</span>
-      </div>
-  
-      <button (click)="logout()" style="padding: 6px 12px; background-color: #f44336; color: white; border: none; cursor: pointer; font-size: 14px;">
+  <app-login></app-login>
+</div>
+
+<div *ngIf="authService.isLoggedIn()">
+  <!-- Header -->
+  <header
+    style="
+      background-color: #6bd089;
+      color: black;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    "
+  >
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        justify-content: left;
+      "
+    >
+      <img
+        src="assets/images/help-icon.png"
+        style="max-width: 50px; max-height: 50px; cursor: pointer"
+        (click)="openDocument()"
+      />
+    </div>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        justify-content: center;
+      "
+    >
+      <img
+        src="assets/images/worker_logo.png"
+        alt="Logo"
+        style="
+          max-width: 285px;
+          max-height: 70px;
+          vertical-align: middle;
+          margin-right: 15px;
+        "
+        class="plus-image"
+        (click)="redirect()"
+      />
+    </div>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        justify-content: right;
+      "
+    >
+      <button
+        (click)="logout()"
+        style="
+          padding: 6px 12px;
+          background-color: #f44336;
+          color: white;
+          border: none;
+          cursor: pointer;
+          font-size: 14px;
+        "
+      >
         Log Out
       </button>
-    </header>
-  
-    <div style="display: flex; min-height: calc(100vh - 90px); flex-direction: column;">
+    </div>
+  </header>
 
-      <div style="display: flex; flex-grow: 1;">
+  <!-- Subheader -->
+  <header
+    #subheader
+    style="
+      display: flex;
+      height: 15px;
+      background-color: #065a18;
+      padding: 5px 0;
+    "
+  >
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        justify-content: left;
+      "
+    >
+      <span style="color: white">
+        <b>User Name: </b> {{ userName }} Rol: ( {{ userRole }} )</span
+      >
+    </div>
+  </header>
 
-        <div style="width: 200px; background-color: #98E0AD; padding: 10px; font-size: 10pt;">
-          <b> Menú</b>
+  <!-- Main Content Area -->
+  <div
+    style="
+      display: flex;
+      flex-direction: column;
+      min-height: calc(100vh - 130px);
+      padding-bottom: 60px;
+    "
+  >
+    <!-- Ajuste para evitar que el contenido se oculte -->
+    <div style="display: flex; flex-grow: 1">
+      <div
+        style="
+          width: 200px;
+          background-color: #98e0ad;
+          padding: 10px;
+          font-size: 10pt;
+        "
+      >
+        <div>
+          <b>Workers</b>
           <ul>
-            <li><a routerLink="/info-worker" routerLinkActive="active">Info Workers</a></li>
-            <li><a routerLink="/list-workers" routerLinkActive="active">List Workers</a></li>
-            <li><a routerLink="/new-worker" routerLinkActive="active">New Workes</a></li>
-            <li><a routerLink="/update-worker" routerLinkActive="active">Update Workers</a></li>
+            <li>
+              <a routerLink="/info-worker" routerLinkActive="active">Details</a>
+            </li>
+            <li>
+              <a routerLink="/list-workers" routerLinkActive="active">List</a>
+            </li>
+            <li>
+              <a routerLink="/new-worker" routerLinkActive="active">New</a>
+            </li>
+            <li>
+              <a routerLink="/update-worker" routerLinkActive="active">Edit</a>
+            </li>
           </ul>
         </div>
-  
-        <div style="flex-grow: 1; padding: 20px;">
-          <router-outlet></router-outlet>
+        <div *ngIf="isAdmin">
+          <b>Categories</b>
+          <ul>
+            <li>
+              <a routerLink="/list-categories" routerLinkActive="active"
+                >List</a
+              >
+            </li>
+            <li>
+              <a routerLink="/new-category" routerLinkActive="active">New</a>
+            </li>
+            <li>
+              <a routerLink="/update-category" routerLinkActive="active"
+                >Edit</a
+              >
+            </li>
+          </ul>
         </div>
       </div>
-  
-      <footer style="background-color: #6BD089; color: black; padding: 10px; text-align: center; bottom: 0; width: 100%; height: 50px;">
-        <p style="font-weight: bold;">&copy; {{this.year}} {{this.title}} {{this.footerMsgRights}}</p>
-      </footer>
+
+      <div style="flex-grow: 1; padding: 20px">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
-  
+
+  <!-- Footer -->
+  <footer
+    style="
+      background-color: #6bd089;
+      color: black;
+      padding: 10px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      z-index: 10;
+    "
+  >
+    <p style="font-weight: bold">{{ this.footerMsgRights }}</p>
+  </footer>
+</div>

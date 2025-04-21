@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Entities;
 
 [Table("Categories")]
 public class Category : BaseEntity
 {
-    [Column("Name")]
+    [Column("name")]
     public string? Name { get; set; }
 }

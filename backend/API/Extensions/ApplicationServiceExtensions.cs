@@ -1,22 +1,29 @@
-﻿using Core.Interfaces;
-using Infrastructure.Repositories;
+﻿using API.Services;
+using Core.Interfaces;
+using Infrastructure.Helpers;
 using Infrastructure.UnitOfWork;
 
 namespace API.Extensions;
 public static class ApplicationServiceExtensions
 {
-    public static void ConfigureCors(this IServiceCollection services) =>
+    public static void ConfigureCors(this IServiceCollection services, IConfiguration configuration) =>
         services.AddCors(options =>
         {
-            string[] origins = { "http://localhost:4200", "http://localhost:5036" };
-            options.AddPolicy("CorsPolicy", builder =>
-                builder.WithOrigins(origins)  // Permite solo este origen en desarrollo
-                    .WithMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+            string[] verbs = configuration.GetSection("CorsSettings:Methods").Get<string[]>();
+
+            var origins = configuration.GetSection("CorsSettings:Origins").Get<string[]>();
+            var policyName = configuration.GetSection("CorsSettings:PolicyName").Get<string>();
+
+            options.AddPolicy(policyName, builder =>
+                builder.WithOrigins(origins)  // Allows only these developing origins
+                    .WithMethods(verbs)
                     .AllowAnyHeader());
         });
 
     public static void AddAplicacionServices(this IServiceCollection services)
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IPasswordHasher, BcryptPasswordHasher>();
+        services.AddScoped<WorkerDTOService>();
     }
 }

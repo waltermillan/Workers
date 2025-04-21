@@ -1,0 +1,28 @@
+<div class="container mt-1">
+  <h2 class="text-center mb-4">Registration of new category</h2>
+  <div class="table-container">
+    <table class="table" name="tbl2">
+      <tbody>
+        <tr>
+          <td>
+            <input
+              type="text"
+              [(ngModel)]="newCategory.name"
+              placeholder="Enter new category"
+              style="width: 50%"
+            />
+          </td>
+          <td>
+            <img
+              src="assets/images/plus-icon.svg"
+              class="plus-image"
+              style="max-width: 30px; min-height: 30px"
+              (click)="addCategory()"
+              title="Add a category"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

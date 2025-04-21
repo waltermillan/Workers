@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>
+  Failure
+  <img
+    src="assets/images/failure-icon.png"
+    style="max-width: 20px; max-height: 20px"
+  />
+</h1>
+<div mat-dialog-content>
+  <p class="text-error">{{ data.message }}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="true">Close</button>
+</div>

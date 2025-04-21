@@ -1,19 +1,60 @@
-﻿using Core.Entities;
-using Core.Interfaces;
+﻿using API.DTOs;
+using API.Responses;
+using API.Services;
 using AutoMapper;
+using Core.Entities;
+using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace API.Controllers;
-[Route("api/workers")]
-public class WorkerController : BaseApiController
+
+public class WorkersController : BaseApiController
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
+    private readonly WorkerDTOService _workerDTOService;
 
-    public WorkerController(IUnitOfWork unitOfWork, IMapper mapper)
+    public WorkersController(IUnitOfWork unitOfWork, IMapper mapper, WorkerDTOService workerDTOService)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
+        _workerDTOService = workerDTOService;
+    }
+
+    [HttpGet("dto")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<WorkerDTO>>> GetAll()
+    {
+        try
+        {
+            var workers = await _workerDTOService.GetWorkersAsync();
+            return Ok(workers);
+        }
+        catch (Exception ex)
+        {
+            Log.Logger.Error("Error getting workers", ex);
+            return StatusCode(500, ApiResponseFactory.Fail<object>($"There was an issue getting the workers. Details ${ex.Message}"));
+        }
+    }
+
+    [HttpGet("dto/{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<WorkerDTO>> GetById(int id)
+    {
+        try
+        {
+            var workers = await _workerDTOService.GetWorkerAsync(id);
+            return Ok(workers);
+        }
+        catch (Exception ex)
+        {
+            Log.Logger.Error("Error getting worker", ex);
+            return StatusCode(500, ApiResponseFactory.Fail<object>($"There was an issue getting the worker. Details ${ex.Message}"));
+        }
     }
 
     [HttpGet]
@@ -21,9 +62,7 @@ public class WorkerController : BaseApiController
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<IEnumerable<Worker>>> Get()
     {
-        var worker = await _unitOfWork.Workers
-                                    .GetAllAsync();
-
+        var worker = await _unitOfWork.Workers.GetAllAsync();
         return _mapper.Map<List<Worker>>(worker);
     }
 

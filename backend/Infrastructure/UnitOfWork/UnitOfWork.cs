@@ -1,7 +1,7 @@
-﻿using Core.Entities;
-using Core.Interfaces;
+﻿using Core.Interfaces;
 using Infrastructure.Data;
 using Infrastructure.Repositories;
+
 namespace Infrastructure.UnitOfWork;
 
 public class UnitOfWork : IUnitOfWork, IDisposable
@@ -10,6 +10,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     private IWorkerRepository _workers;
     private ICategoryRepository _categories;
     private IAdministratorRepository _administrators;
+    private IRoleRepository _roles;
 
     public UnitOfWork(WorkersContext context)
     {
@@ -23,7 +24,9 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     {
         get
         {
-            _workers ??= new WorkerRepository(_context);
+            if (_workers is null)
+                _workers = new WorkerRepository(_context);
+
             return _workers;
         }
     }    
@@ -32,7 +35,9 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     {
         get
         {
-            _administrators ??= new AdministratorRepository(_context);
+            if (_administrators is null)
+                _administrators = new AdministratorRepository(_context);
+
             return _administrators;
         }
     }
@@ -41,16 +46,21 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     {
         get
         {
-            _categories ??= new CategoryRepository(_context);
-            return _categories;
-            /*Codigo equivalente:
-             * 
-            if (_categories == null)
-            {
+            if (_categories is null)
                 _categories = new CategoryRepository(_context);
-            }
+   
             return _categories;
-            */
+        }
+    }
+
+    public IRoleRepository Roles
+    {
+        get
+        {
+            if (_roles is null)
+                _roles = new RoleRepository(_context);
+
+            return _roles;
         }
     }
 
